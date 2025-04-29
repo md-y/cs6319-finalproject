@@ -1,0 +1,14 @@
+[remap]
+
+importer="glsl"
+type="RDShaderFile"
+uid="uid://nqgf0rygyqj7"
+path="res://.godot/imported/gpu_dt_postprocess.glsl-19470dc7c98dc24af3b966ebd801b53e.res"
+
+[deps]
+
+source_file="res://implementations/gpu_dt/compute_shaders/gpu_dt_postprocess.glsl"
+dest_files=["res://.godot/imported/gpu_dt_postprocess.glsl-19470dc7c98dc24af3b966ebd801b53e.res"]
+
+[params]
+

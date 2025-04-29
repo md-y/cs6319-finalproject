@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bn8fkpputospa"]
+
+[ext_resource type="Shader" uid="uid://wleok66aijbw" path="res://implementations/gpu_dt/resources/gpu_dt_display_shader.gdshader" id="1_apvaf"]
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_apvaf"]
+
+[resource]
+shader = ExtResource("1_apvaf")
+shader_parameter/input_texture = SubResource("Texture2DRD_apvaf")

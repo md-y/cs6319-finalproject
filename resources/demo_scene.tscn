@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://71n34aq3iqnm"]
+
+[ext_resource type="Script" uid="uid://d4h2ii4debhtu" path="res://visualizer/visualizer_controller.gd" id="1_25l03"]
+[ext_resource type="Script" uid="uid://ccjtci7oau27p" path="res://implementations/gpu_dt/gpu_dt.gd" id="1_ptydx"]
+[ext_resource type="Resource" uid="uid://cffmuifw51u3n" path="res://resources/demo_point_list.tres" id="2_ptydx"]
+
+[node name="Visualizer" type="Node" node_paths=PackedStringArray("dt_implementation", "run_info_label")]
+script = ExtResource("1_25l03")
+points = ExtResource("2_ptydx")
+dt_implementation = NodePath("FullRect/HBoxContainer/AspectRatioContainer/MarginContainer/GPU_DT")
+run_info_label = NodePath("FullRect/HBoxContainer/MarginContainer/VBoxContainer/Label")
+
+[node name="FullRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.25212, 0.330259, 0.381743, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FullRect"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="FullRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="MarginContainer" type="MarginContainer" parent="FullRect/HBoxContainer/AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="GPU_DT" type="ColorRect" parent="FullRect/HBoxContainer/AspectRatioContainer/MarginContainer"]
+layout_mode = 2
+script = ExtResource("1_ptydx")
+points = ExtResource("2_ptydx")
+metadata/_custom_type_script = "uid://ccjtci7oau27p"
+
+[node name="MarginContainer" type="MarginContainer" parent="FullRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FullRect/HBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="FullRect/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+selected = 1
+item_count = 2
+popup/item_0/text = "Bowyer-Watson"
+popup/item_0/id = 0
+popup/item_1/text = "GPU-DT"
+popup/item_1/id = 1
+
+[node name="Skip to End" type="Button" parent="FullRect/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Skip to End"
+
+[node name="NextPhaseButton" type="Button" parent="FullRect/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Step"
+
+[node name="ResetButton" type="Button" parent="FullRect/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Reset"
+
+[node name="Label" type="Label" parent="FullRect/HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="item_selected" from="FullRect/HBoxContainer/MarginContainer/VBoxContainer/OptionButton" to="." method="change_implementation"]
+[connection signal="button_up" from="FullRect/HBoxContainer/MarginContainer/VBoxContainer/Skip to End" to="." method="skip_to_end"]
+[connection signal="button_up" from="FullRect/HBoxContainer/MarginContainer/VBoxContainer/NextPhaseButton" to="." method="step_execution"]
+[connection signal="button_down" from="FullRect/HBoxContainer/MarginContainer/VBoxContainer/ResetButton" to="." method="reset_implementation"]
