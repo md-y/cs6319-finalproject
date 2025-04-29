@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cnblo1smhxabb"]
+
+[ext_resource type="Shader" uid="uid://biiwtxciegk08" path="res://implementations/gdel2d/resources/gdel2d_display_shader.gdshader" id="1_k2o5w"]
+
+[sub_resource type="Texture2DRD" id="Texture2DRD_k2o5w"]
+
+[resource]
+shader = ExtResource("1_k2o5w")
+shader_parameter/input_texture = SubResource("Texture2DRD_k2o5w")
